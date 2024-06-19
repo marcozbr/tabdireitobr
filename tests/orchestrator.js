@@ -156,6 +156,10 @@ async function createUser(userObject) {
   });
 }
 
+async function findUserByEmail(email) {
+  return await user.findOneByEmail(email);
+}
+
 async function addFeaturesToUser(userObject, features) {
   return await user.addFeatures(userObject.id, features);
 }
@@ -408,6 +412,7 @@ const orchestrator = {
   deleteAllEmails,
   getLastEmail,
   createUser,
+  findUserByEmail,
   activateUser,
   createSession,
   findSessionByToken,

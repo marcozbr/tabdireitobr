@@ -1,13 +1,14 @@
 import react from '@vitejs/plugin-react';
 import { config } from 'dotenv';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 config();
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   test: {
+    exclude: [...configDefaults.exclude, '**/tests/e2e/**'],
     environmentMatchGlobs: [['**/interface/**/*', 'jsdom']],
     globals: true,
     fileParallelism: false,
